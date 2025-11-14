@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ title }}</title>
+        <style>
+                body { font-family: Inter, Arial, Helvetica, sans-serif; margin: 24px; color: #111; background-attachment: fixed; background-color:#f6f7fb; background-image: radial-gradient(circle at 10% 20%, rgba(124,58,237,0.08) 0%, rgba(124,58,237,0.00) 25%), radial-gradient(circle at 90% 80%, rgba(6,182,212,0.06) 0%, rgba(6,182,212,0.00) 20%), linear-gradient(135deg,#f7f9ff 0%,#eef6ff 60%,#fffafc 100%); }
+                .container { max-width: 980px; margin: 0 auto; }
+                .card { background: rgba(255,255,255,0.85); border-radius: 16px; padding: 28px; box-shadow: 0 12px 30px rgba(15,23,42,0.08); border: 1px solid rgba(15,23,42,0.04); backdrop-filter: blur(6px); }
+                .center { text-align: center; }
+                img.avatar { width:128px; height:128px; border-radius:9999px; border:4px solid #7c3aed; }
+                .links a { display:block; margin:8px 0; padding:12px; border-radius:10px; color:#fff; text-decoration:none; transform:scale(1); transform-origin:center; transition: transform 180ms ease, box-shadow 180ms ease; will-change: transform; }
+                .links a:hover { transform: scale(1.06); box-shadow: 0 10px 20px rgba(0,0,0,0.12); z-index:2; }
+                .admin-btn { cursor:pointer; color:#fff; background: linear-gradient(90deg,#7c3aed,#06b6d4); padding:8px 12px; border-radius:999px; border:none; display:inline-flex; align-items:center; gap:8px; font-weight:600; box-shadow:0 6px 18px rgba(99,102,241,0.18); transition: transform 150ms ease, box-shadow 150ms ease; text-decoration:none; }
+                .admin-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow:0 12px 30px rgba(99,102,241,0.24); }
+                /* Bottom running dinosaur track */
+                .dino-track { position: fixed; left: 0; right: 0; bottom: 8px; height: 120px; pointer-events: none; z-index: 999; overflow: hidden; }
+                .dino-strip { display: flex; align-items: flex-end; gap: 56px; width: 200%; }
+                .dino-strip .dino { width: 140px; height: auto; fill: #0b0b0b; filter: drop-shadow(0 8px 12px rgba(0,0,0,0.18)); transform-origin: center bottom; animation: bob 0.45s ease-in-out infinite; }
+                .dino-strip .dino:nth-child(2n) { animation-delay: 0.12s; }
+                @keyframes dino-scroll { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+                @keyframes bob { 0% { transform: translateY(0); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0); } }
+                @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+                .dino-anim { animation: dino-scroll 10s linear infinite; }
+                .ball-spin { animation: spin 1s linear infinite !important; }
+        </style>
+</head>
+<body>
+        <!-- Bottom running dinosaur (decorative) - seamless infinite loop -->
+        <div class="dino-track" aria-hidden="true">
+          <div class="dino-strip dino-anim">
+            <!-- First sequence (8 rolling balls for smooth continuous animation) -->
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#333"/><circle cx="70" cy="60" r="40" fill="#555"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#222" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#999" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#444"/><circle cx="70" cy="60" r="40" fill="#666"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#333" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#aaa" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#333"/><circle cx="70" cy="60" r="40" fill="#555"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#222" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#999" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#444"/><circle cx="70" cy="60" r="40" fill="#666"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#333" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#aaa" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#333"/><circle cx="70" cy="60" r="40" fill="#555"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#222" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#999" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#444"/><circle cx="70" cy="60" r="40" fill="#666"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#333" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#aaa" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#333"/><circle cx="70" cy="60" r="40" fill="#555"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#222" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#999" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#444"/><circle cx="70" cy="60" r="40" fill="#666"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#333" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#aaa" opacity="0.8"/></svg>
+            <!-- Duplicate sequence to fill 200% (second half of infinite loop) -->
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#333"/><circle cx="70" cy="60" r="40" fill="#555"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#222" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#999" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#444"/><circle cx="70" cy="60" r="40" fill="#666"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#333" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#aaa" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#333"/><circle cx="70" cy="60" r="40" fill="#555"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#222" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#999" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#444"/><circle cx="70" cy="60" r="40" fill="#666"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#333" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#aaa" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#333"/><circle cx="70" cy="60" r="40" fill="#555"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#222" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#999" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#444"/><circle cx="70" cy="60" r="40" fill="#666"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#333" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#aaa" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#333"/><circle cx="70" cy="60" r="40" fill="#555"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#222" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#999" opacity="0.8"/></svg>
+            <svg class="dino ball-spin" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="60" r="45" fill="#444"/><circle cx="70" cy="60" r="40" fill="#666"/><path d="M40 60 Q70 40 100 60 Q70 80 40 60" fill="#333" opacity="0.6"/><circle cx="60" cy="50" r="8" fill="#aaa" opacity="0.8"/></svg>
+          </div>
+        </div>
+        <div class="container">
+                <div class="card">
+                        <div id="root"></div>
+                </div>
+        </div>
+
+        <!-- React + Babel (development UMD builds). For production bundle these assets instead. -->
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <!-- Component (type text/babel so Babel transpiles JSX in-browser). -->
+        {% verbatim %}
+        <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const PersonalIntroWeb = () => {
+            const [isAdmin, setIsAdmin] = useState(false);
+            const [isEditing, setIsEditing] = useState(false);
+            const [password, setPassword] = useState('');
+            const [showLogin, setShowLogin] = useState(false);
+
+            // Default data
+            const defaultData = {
+                name: '',
+                title: 'Web Developer & Designer',
+                avatar: 'https://scontent.fubp1-1.fna.fbcdn.net/v/t1.15752-9/581984578_1983043205872057_4771677412222051710_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGlJxTs1PDf0fDp_VzrbdeQiESG6lIRrYWIRIbqUhGthT8hlobgkqefw4Fr8xHKzipcklvIuvAF7kdNVG53wFdR&_nc_ohc=QAnT-2QadXkQ7kNvwGknr-4&_nc_oc=AdmXnsRVrGFKamKY2G83DxLN8Az8OCNFlLdhZyynWdoK9jOpWZnEiaeWDfF-k7xup0V1dLF4sUdHn93IrbUvyYm1&_nc_zt=23&_nc_ht=scontent.fubp1-1.fna&oh=03_Q7cD3wEiddF5h4B1a0QTkuBgwdOmWvxp_6jhRG5ACOlt0hxyEA&oe=693E5C26',
+                links: [
+                    { id: 1, name: 'Facebook', url: 'https://www.facebook.com/nnyxen', icon: '📘', color: '#1877F2' },
+                    { id: 2, name: 'Instagram', url: 'https://www.instagram.com/nnyxen.cy/', icon: '📷', color: '#E4405F' },
+                    { id: 3, name: 'Tiktok', url: 'https://www.tiktok.com/@pxtxnakub?is_from_webapp=1&sender_device=pc', icon: '💼', color: '#0A66C2' },
+                ]
+            };
+
+            const [data, setData] = useState(defaultData);
+            const [editData, setEditData] = useState(defaultData);
+            const [newLink, setNewLink] = useState({ name: '', url: '', icon: '🔗', color: '#6366F1' });
+
+            // Load data from localStorage
+            useEffect(() => {
+                try {
+                    const raw = localStorage.getItem('profile-data');
+                    if (raw) {
+                        const saved = JSON.parse(raw);
+                        setData(saved);
+                        setEditData(saved);
+                    }
+                } catch (e) {
+                    // ignore and use default
+                }
+            }, []);
+
+            const saveData = () => {
+                try {
+                    localStorage.setItem('profile-data', JSON.stringify(editData));
+                    setData(editData);
+                    setIsEditing(false);
+                    alert('บันทึกข้อมูลเรียบร้อย!');
+                } catch (err) {
+                    alert('เกิดข้อผิดพลาดในการบันทึก');
+                }
+            };
+
+            const handleLogin = () => {
+                if (password === 'nnyxen3469') {
+                    setIsAdmin(true);
+                    setShowLogin(false);
+                    setPassword('');
+                } else {
+                    alert('รหัสผ่านไม่ถูกต้อง!');
+                }
+            };
+
+            const handleLogout = () => {
+                setIsAdmin(false);
+                setIsEditing(false);
+                setEditData(data);
+            };
+
+            const addLink = () => {
+                if (newLink.name && newLink.url) {
+                    const link = { ...newLink, id: Date.now() };
+                    setEditData({ ...editData, links: [...editData.links, link] });
+                    setNewLink({ name: '', url: '', icon: '🔗', color: '#6366F1' });
+                }
+            };
+
+            const removeLink = (id) => {
+                setEditData({
+                    ...editData,
+                    links: editData.links.filter(link => link.id !== id)
+                });
+            };
+
+            const cancelEdit = () => {
+                setEditData(data);
+                setIsEditing(false);
+            };
+
+            // Simple icons as emojis
+            const Icon = ({ children }) => <span style={{fontSize:18, marginRight:8}}>{children}</span>;
+
+            // View Mode
+            if (!isAdmin) {
+                return (
+                    <div>
+                        <div style={{display:'flex', justifyContent:'flex-end'}}>
+                                <button className="admin-btn" onClick={() => setShowLogin(true)} aria-label="เปิดหน้าล็อกอินแอดมิน">🔒 เข้าสู่ระบบแอดมิน</button>
+                            </div>
+
+                        <div className="center" style={{padding:'20px 0'}}>
+                            <img src={data.avatar} alt={data.name} className="avatar" />
+                            <h1 style={{margin:'12px 0'}}>{data.name}</h1>
+                            <div style={{color:'#7c3aed', fontWeight:600}}>{data.title}</div>
+                            <p style={{maxWidth:700, margin:'12px auto', color:'#6b7280'}}>{data.bio}</p>
+                        </div>
+
+                        <div className="links">
+                            {data.links.map(link => (
+                                <a key={link.id} href={link.url} target="_blank" rel="noreferrer" style={{background:link.color}}>
+                                    <span style={{marginRight:12}}>{link.icon}</span>
+                                    <strong>{link.name}</strong>
+                                </a>
+                            ))}
+                        </div>
+
+                        {showLogin && (
+                            <div style={{position:'fixed', inset:0, background:'rgba(0,0,0,0.5)', display:'flex', alignItems:'center', justifyContent:'center'}}>
+                                <div style={{background:'#fff', padding:20, borderRadius:12, width:320}}>
+                                    <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:12}}>
+                                        <strong>Admin</strong>
+                                        <button onClick={() => setShowLogin(false)}>✖️</button>
+                                    </div>
+                                    <input type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="รหัสผ่าน" style={{width:'100%', padding:8, marginBottom:8}} onKeyDown={(e)=> e.key==='Enter' && handleLogin()} />
+                                    <button onClick={handleLogin} style={{width:'100%', padding:10, background:'#7c3aed', color:'#fff', border:0, borderRadius:8}}>เข้าสู่ระบบ</button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                );
+            }
+
+            // Admin Edit Mode
+            return (
+                <div>
+                    <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:12}}>
+                        <div style={{display:'flex', alignItems:'center', gap:8}}>
+                            <div style={{width:10,height:10,background:'#10b981',borderRadius:99}}></div>
+                            <strong>Admin</strong>
+                        </div>
+                        <div style={{display:'flex', gap:8}}>
+                            {!isEditing ? (
+                                <>
+                                    <button onClick={()=>setIsEditing(true)} style={{padding:'8px 12px', background:'#2563eb', color:'#fff', border:0, borderRadius:8}}>✏️ แก้ไขข้อมูล</button>
+                                    <button onClick={handleLogout} style={{padding:'8px 12px', background:'#374151', color:'#fff', border:0, borderRadius:8}}>ออกจากระบบ</button>
+                                </>
+                            ) : (
+                                <>
+                                    <button onClick={saveData} style={{padding:'8px 12px', background:'#16a34a', color:'#fff', border:0, borderRadius:8}}>💾 บันทึก</button>
+                                    <button onClick={cancelEdit} style={{padding:'8px 12px', background:'#dc2626', color:'#fff', border:0, borderRadius:8}}>✖️ ยกเลิก</button>
+                                </>
+                            )}
+                        </div>
+                    </div>
+
+                    {isEditing ? (
+                        <div style={{background:'#fff', padding:16, borderRadius:10}}>
+                            <h3>แก้ไขข้อมูลส่วนตัว</h3>
+                            <div style={{marginBottom:8}}>
+                                <label>ชื่อ</label>
+                                <input type="text" value={editData.name} onChange={e=>setEditData({...editData, name:e.target.value})} style={{width:'100%', padding:8}} />
+                            </div>
+                            <div style={{marginBottom:8}}>
+                                <label>ตำแหน่ง/อาชีพ</label>
+                                <input type="text" value={editData.title} onChange={e=>setEditData({...editData, title:e.target.value})} style={{width:'100%', padding:8}} />
+                            </div>
+                            <div style={{marginBottom:8}}>
+                                <label>เกี่ยวกับตัวเอง</label>
+                                <textarea value={editData.bio} onChange={e=>setEditData({...editData, bio:e.target.value})} rows={4} style={{width:'100%', padding:8}} />
+                            </div>
+                            <div style={{marginBottom:8}}>
+                                <label>URL รูปภาพ</label>
+                                <input type="text" value={editData.avatar} onChange={e=>setEditData({...editData, avatar:e.target.value})} style={{width:'100%', padding:8}} />
+                            </div>
+
+                            <div style={{marginTop:12}}>
+                                <h4>ลิงก์ต่างๆ</h4>
+                                {editData.links.map(link=> (
+                                    <div key={link.id} style={{display:'flex', gap:8, alignItems:'center', marginBottom:8}}>
+                                        <input value={link.icon} onChange={e=>setEditData({...editData, links: editData.links.map(l=> l.id===link.id?{...l, icon:e.target.value}:l)})} style={{width:48}} />
+                                        <input value={link.name} onChange={e=>setEditData({...editData, links: editData.links.map(l=> l.id===link.id?{...l, name:e.target.value}:l)})} style={{flex:1}} />
+                                        <input value={link.url} onChange={e=>setEditData({...editData, links: editData.links.map(l=> l.id===link.id?{...l, url:e.target.value}:l)})} style={{flex:1}} />
+                                        <input type="color" value={link.color} onChange={e=>setEditData({...editData, links: editData.links.map(l=> l.id===link.id?{...l, color:e.target.value}:l)})} />
+                                        <button onClick={()=>removeLink(link.id)} style={{background:'#fee2e2', borderRadius:6}}>🗑️</button>
+                                    </div>
+                                ))}
+
+                                <div style={{border:'1px dashed #d1d5db', padding:8, borderRadius:8, marginTop:8}}>
+                                    <div style={{display:'flex', gap:8, marginBottom:8}}>
+                                        <input value={newLink.icon} onChange={e=>setNewLink({...newLink, icon:e.target.value})} style={{width:56}} />
+                                        <input value={newLink.name} onChange={e=>setNewLink({...newLink, name:e.target.value})} style={{flex:1}} placeholder="ชื่อลิงก์" />
+                                        <input value={newLink.url} onChange={e=>setNewLink({...newLink, url:e.target.value})} style={{flex:1}} placeholder="https://..." />
+                                        <input type="color" value={newLink.color} onChange={e=>setNewLink({...newLink, color:e.target.value})} />
+                                    </div>
+                                    <button onClick={addLink} style={{background:'#16a34a', color:'#fff', padding:'8px 12px', border:0, borderRadius:8}}>➕ เพิ่มลิงก์</button>
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        <div style={{borderRadius:12, overflow:'hidden', padding:16}}>
+                            <div style={{textAlign:'center'}}>
+                                <img src={data.avatar} alt={data.name} className="avatar" />
+                                <h2 style={{marginTop:12}}>{data.name}</h2>
+                                <div style={{color:'#7c3aed'}}>{data.title}</div>
+                                <p style={{color:'#6b7280'}}>{data.bio}</p>
+                            </div>
+                            <div style={{marginTop:12}}>
+                                {data.links.map(link=> (
+                                    <a key={link.id} href={link.url} target="_blank" rel="noreferrer" style={{display:'flex', justifyContent:'space-between', alignItems:'center', padding:12, borderRadius:10, background:link.color, color:'#fff', textDecoration:'none', marginBottom:8}}>
+                                        <div style={{display:'flex', alignItems:'center', gap:8}}>
+                                            <span style={{fontSize:20}}>{link.icon}</span>
+                                            <span style={{fontWeight:600}}>{link.name}</span>
+                                        </div>
+                                        <span style={{fontSize:16}}>🔗</span>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(PersonalIntroWeb));
+        </script>
+        {% endverbatim %}
+</body>
+</html>
