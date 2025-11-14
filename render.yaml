@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: webappme
+    env: docker
+    branch: main
+    plan: free
+    dockerfilePath: Dockerfile
+    startCommand: "gunicorn myproject.wsgi:application --bind 0.0.0.0:$PORT --workers 3"
+    buildCommand: null
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        # Render will assign a default internal domain; you can update this in Render UI later
+        value: "*"
+    healthCheckPath: "/"
